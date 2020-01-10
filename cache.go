@@ -14,6 +14,7 @@ import (
 
 	"cloud.google.com/go/storage"
 	"golang.org/x/crypto/acme/autocert"
+	"google.golang.org/api/option"
 )
 
 // Cache implements the autocert.Cache interface using Google Cloud Storage.
@@ -24,8 +25,8 @@ type Cache struct {
 
 // New creates and initializes a new Cache backed by the given Google Cloud
 // Storage bucket.
-func New(bucket string) (*Cache, error) {
-	client, err := storage.NewClient(context.Background())
+func New(bucket string, option ...option.ClientOption) (*Cache, error) {
+	client, err := storage.NewClient(context.Background(), option...)
 	if err != nil {
 		return nil, err
 	}

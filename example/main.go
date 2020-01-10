@@ -10,8 +10,9 @@ import (
 	"log"
 	"net/http"
 
-	"github.com/kelseyhightower/gcscache"
 	"golang.org/x/crypto/acme/autocert"
+
+	"github.com/virgild/gcscache"
 )
 
 var (
